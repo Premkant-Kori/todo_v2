@@ -1,0 +1,45 @@
+ <!-- Start: Show Completed Task -->
+ <div class="col col-12 col-sm-12 col-md-12 col-lg-4">
+    <!-- Start: Completed Task - Section -->
+    <section class="py-1 py-sm-1 py-md-2 py-lg-3 py-xl-4">
+        <!-- Start: Completed Task - Container -->
+        <div class="container-fluid">
+            <!-- Start: Completed Task - Container - Div - Heading -->
+            <div class="d-sm-flex justify-content-sm-center align-items-sm-center p-1 p-sm-1 p-md-2 p-lg-3 p-xl-4" style="background: #787d82;max-height: 34px;text-align: center;color: #ffffff;">
+                <h3 style="margin-bottom: 0px;">Completed</h3>
+            </div><!-- End: Completed Task - Container - Div - Heading -->
+            <!-- Start: Completed Task - Container - Div - 2 -->
+            <div class="d-sm-flex justify-content-sm-center align-items-sm-center p-1 p-sm-1 p-md-2 p-lg-3 p-xl-4" style="background: var(--bs-gray-100);">
+                <!-- Start: Completed Task - Container - Div - 2-column -->
+                <div class="col">
+                    <!-- Start: Div-2-Table -->
+                    <div>
+                        <table class="table">
+                            <tbody>
+                                <!-- Start: Div-2-Table-Row -->
+                                {% for task in completed_task_data %}
+                                <tr>
+                                    <!-- Start: Div-2-Table-Row-cell -->
+                                    <td class="d-flex justify-content-between align-items-center">
+                                        <span class="flex-grow-1" style="font-family: Roboto, sans-serif;">{{ task.task_column }}</span>
+                                        <span class="ms-auto">
+                                            <a class="mx-1" href="{% url 'mark_uncomplete' task.id %}" title="Add to Task"><i class="fas fa-prescription-bottle-alt"></i></a>
+                                            <a class="mx-1" href="{% url 'deletetask' task.id %}" title="delete"><i class="fas fa-trash-alt"></i></a>
+                                        </span>
+                                    </td>
+                                    <!-- End: Div-2-Table-Row-cell -->
+                                </tr>
+                                {% endfor %}
+                                <!-- End: Div-2-Table-Row -->
+                            </tbody>
+                        </table>
+                    </div><!-- End: Div-2-Table -->
+                    <!-- Start: Div-2-No Completed Task -->
+                    {% if not completed_task_data %}
+                    <h6 class="text-center alert alert-warning" style="padding: 4px;background: var(--bs-border-color-translucent);color: var(--bs-red);border-color: var(--bs-border-color-translucent);">No Completed Task</h6><!-- End: Div-2-No Completed Task -->
+                    {% endif %}
+                </div><!-- End: Completed Task - Container - Div - 2-column -->
+            </div><!-- End: Completed Task - Container - Div - 2 -->
+        </div><!-- End: Completed Task - Container -->
+    </section><!-- End: Completed Task - Section -->
+</div><!-- End: Show Completed Task -->

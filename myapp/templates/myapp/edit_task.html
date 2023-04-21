@@ -1,0 +1,16 @@
+<!--Through this we will update the record of student-->
+{% extends 'myapp/index.html' %}
+
+{% block edittask %}
+<div class="row">
+    <div class="col-sm-8 offset-2">
+        <div>
+        <form action="" method="post" class='text-center"'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class="btn btn-primary mx-auto" type="submit" style="background: #92989f;"  value="update">
+        </form>
+    </div>
+    </div>
+</div>
+{% endblock edittask %}

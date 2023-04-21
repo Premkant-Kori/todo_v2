@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>TODO APP 2</title>
+    <link rel="stylesheet" href="{% static 'myapp/assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="{% static 'myapp/assets/fonts/fontawesome-all.min.css' %}">
+</head>
+
+<body style="--bs-body-bg: var(--bs-gray-200);">
+    <div class="container">
+        <div class="row">
+
+            {% block enter_and_show_task %}
+            {% include 'myapp/enter_and_show.html' %}
+            {% endblock enter_and_show_task %}
+
+            {% block show_Completed_task %}
+            {% include 'myapp/show_completed.html' %}
+            {% endblock show_Completed_task %}
+
+            {% block search_and_display_task %}
+            {% include 'myapp/search_and_display.html' %}
+            {% endblock search_and_display_task %}
+
+            {% block edittask %}
+            {% endblock edittask %}
+
+
+
+
+        </div>
+    </div>
+    <script src="{% static 'myapp/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
+

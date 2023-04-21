@@ -1,0 +1,58 @@
+<!-- Start: Search and Display Task -->
+<div class="col col-12 col-sm-12 col-md-12 col-lg-4">
+    <!-- Start: Search and Display Task>section -->
+    <section class="py-1 py-sm-1 py-md-2 py-lg-3 py-xl-4">
+        <!-- Start: Search and Display Task>section>container -->
+        <div class="container-fluid">
+            <!-- Start: container>DIV>HEADER -->
+            <div class="d-sm-flex justify-content-sm-center align-items-sm-center p-1 p-sm-1 p-md-2 p-lg-3 p-xl-4" style="background: #787d82;max-height: 34px;text-align: center;color: #ffffff;">
+                <h3 style="margin-bottom: 0px;">Search</h3>
+            </div><!-- End: container>DIV>HEADER -->
+            <!-- Start: container>DIV>TYPE AND SEARCH -->
+            <div class="d-sm-flex justify-content-sm-center align-items-sm-center p-1 p-sm-1 p-md-2 p-lg-3 p-xl-4" style="background: var(--bs-gray-100);">
+                <!-- Start: DIV>FORM -->
+                <form class="d-flex d-sm-flex justify-content-center justify-content-sm-center m-auto" method="get" action="{% url 'getandsearchformdata' %}" style="width: 100%;">
+                    <!-- Start: FORM>DIV>INPUT TEXT -->
+                    <div class="col-9 my-1"><input class="form-control" type="text" placeholder="Search Task" id="searchtask" name="searchtask"></div><!-- End: FORM>DIV>INPUT TEXT -->
+                    <!-- Start: FORM>DIV>SEARCH BUTTON -->
+                    <div class="text-end text-sm-end text-md-end text-lg-end text-xl-end text-xxl-end my-1 col-auto"><button class="btn btn-primary ms-1" type="submit" style="background: #92989f;">Search</button></div><!-- End: FORM>DIV>SEARCH BUTTON -->
+                </form><!-- End: DIV>FORM -->
+            </div><!-- End: container>DIV>TYPE AND SEARCH -->
+            <!-- Start: container>DIV>TASK, ACTION BTN, NO DATA FOUND -->
+            <div class="d-sm-flex justify-content-sm-center align-items-sm-center p-1 p-sm-1 p-md-2 p-lg-3 p-xl-4" style="background: var(--bs-gray-100);">
+                <!-- Start: container>DIV>COLUMN -->
+                <div class="col">
+                    <!-- Start: COLUMN>TABLE -->
+                    <div>
+                        <table class="table">
+                            <tbody>
+                                <!-- Start: COLUMN>TABLE>TABLE ROW -->
+                                {% if tasktable_search_data %}
+                                {% for task in tasktable_search_data %}
+                                <tr>
+                                    <!-- Start: TABLE>TABLE ROW>TABLE CELL -->
+                                    <td class="d-flex justify-content-between align-items-center">
+                                        <span class="flex-grow-1" style="font-family: Roboto, sans-serif;">{{task.task_column}}</span>
+                                        <span class="ms-auto">
+                                            <a class="mx-1" href="{% url 'taskedit' task.id %}" title="edit"><i class="fas fa-edit"></i></a>
+                                            <a class="mx-1" href="{% url 'taskcomplete' task.id %}" title="done"><i class="fas fa-check-circle"></i></a>
+                                            <a class="mx-1" href="{% url 'deletetask' task.id %}" title="delete"><i class="fas fa-trash-alt"></i></a>
+                                        </span>
+                                    </td>
+                                    <!-- End: TABLE>TABLE ROW>TABLE CELL -->
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+                                <!-- End: COLUMN>TABLE>TABLE ROW -->
+                            </tbody>
+                        </table>
+                    </div><!-- End: COLUMN>TABLE -->
+                    <!-- Start: COLUMN>TABLE>TABLE ROW>NO TASK MATCH -->
+                    {% if not tasktable_search_data %}
+                    <h6 class="text-center alert alert-warning" style="padding: 4px;background: var(--bs-border-color-translucent);color: var(--bs-red);border-color: var(--bs-border-color-translucent);">No Task Available</h6><!-- End: COLUMN>TABLE>TABLE ROW>NO TASK MATCH -->
+                    {% endif %}
+                </div><!-- End: container>DIV>COLUMN -->
+            </div><!-- End: container>DIV>TASK, ACTION BTN, NO DATA FOUND -->
+        </div><!-- End: Search and Display Task>section>container -->
+    </section><!-- End: Search and Display Task>section -->
+</div><!-- End: Search and Display Task -->
